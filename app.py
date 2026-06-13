@@ -54,6 +54,9 @@ for pdf_file in PDF_DIR.glob("*.pdf"):
     while i < len(lines):
         line = lines[i]
 
+        # Fußnoten-Artefakte entfernen
+        line = re.sub(r"(,\d{2})\d\b", r"\1", line)
+
         # neue Buchung beginnt
         if date_pattern.match(line):
 
